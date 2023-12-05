@@ -36,7 +36,7 @@ Below is an image of the database table columns and connections.
 The following Analysis will be conducted on the following;
 
 * Are all the warehouses currently is use needed. What is the total inventory of each warehouse?
-* Are there products with high stock levels but low sales? Are there products with more stocks than Orders?
+* Are there products with high stock levels but low sales? Are there products with less inventory than Pending Orders?
 * What is the comparison of various product lines?
 * Is there a relationship between prices and there sales levels?
 * Who are the customers contributing the most sales?
@@ -113,3 +113,29 @@ order by LessInventory desc
 The result is a record of products that need replenishment in order to meet market requirement.
 
 ![Alt text](LessStocksList.PNG)
+
+A modification of the above code in the where statement to show records whose difference is greater than 0 returns products with high stock levels but low sales
+
+```sql
+select productCode,
+productName,
+quantityInStock,
+totalOrdered,
+(quantityInStock - totalOrdered) as LessInventory
+from 
+ ( select p.productCode,
+          p.productName,
+          p.quantityInStock,
+          sum(od.quantityOrdered) as totalOrdered
+	from 
+    mintclassics.products p
+    left join mintclassics.orderdetails od on od.productCode = p.productCode
+  
+    Group by p.productCode,
+			 p.productName,
+			 p.quantityInStock
+   ) as StocksInfo
+where 
+     (quantityInStock - totalOrdered)  > 0
+order by LessInventory desc
+```
