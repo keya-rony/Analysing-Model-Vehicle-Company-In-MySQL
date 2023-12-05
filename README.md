@@ -213,3 +213,25 @@ order by
 OrderCount desc
 ;
 ```
+
+![Alt text](CustsSALES.PNG)
+
+### What is the analysis of customer payment trends and what credit risks need to be considered?
+
+The following query retreieves customer data (customers) and payment information (payments) associated with each customer. The data retrieved includes customer number (customerNumber), customer name (customerName), payment date (paymentDate), and payment amount (paymentAmount). A LEFT JOIN between the customers table and the payments table  based on the customer number allows us to combine customer information with payment data related to each customer.
+
+```SQL
+select 
+c.customerNumber,
+c.customerName,
+p.paymentDate,
+p.amount as PaidAmount
+from customers c
+Left join 
+payments p on c.customerNumber = p.customerNumber
+order by
+PaidAmount desc
+;
+```
+By using this query, you can view a list of customers along with the dates and the largest payment amounts they have made. This helps in the analysis customer payment trends and identify customers with the highest payment amounts.
+
