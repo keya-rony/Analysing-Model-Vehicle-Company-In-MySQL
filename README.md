@@ -44,7 +44,7 @@ The following Analysis will be conducted on the following;
 * How can company credit policies be evaluated? Are there any customers with credit issues that need to be addressed?
 * Can the perfomance of employees be evaluated using available sales data?
 
-### 1.  Are all the warehouses currently is use needed. What is the total inventory of each warehouse?
+### Are all the warehouses currently is use needed? What is the total inventory of each warehouse?
 
 Using MSQL query to retrieve total inventory of each product in each warehouse. The query joins two tables in the Mint Classic databse, the Prouducts table and warehouses table based on the warehouse code
 ``` SQL
@@ -81,3 +81,33 @@ w.warehouseName
 The result is the number of stocks in each warehouse as shown in the screenshot below.
 
 ![Alt text](warehousestocks.PNG)
+
+### Are there products with high stock levels but low sales? Are there products with more stocks than Orders?
+
+Using SQL query to retrieves data from the products table and order details from the orderdetails table. The query then groups the data by product code, product name, and the quantity of the product available in stock. Next, the query calculates the total quantity of the product ordered by combining data from both tables. The query the finds the difference between Total stocks and total ordered  as InventoryLessOrders. The query then limits the result to only Pending Orders that have less stocks compared to what was ordered.
+
+```sql
+select productCode,
+productName,
+quantityInStock,
+totalOrdered,
+(quantityInStock - totalOrdered) as LessInventory
+from 
+ ( select p.productCode,
+          p.productName,
+          p.quantityInStock,
+          sum(od.quantityOrdered) as totalOrdered
+	from 
+    mintclassics.products p
+    left join mintclassics.orderdetails od on od.productCode = p.productCode
+  
+    Group by p.productCode,
+			 p.productName,
+			 p.quantityInStock
+   ) as StocksInfo
+where 
+     (quantityInStock - totalOrdered)  < 0
+order by LessInventory desc
+```
+
+The result is a record of products that need replenishment in order to meet market requirement.
