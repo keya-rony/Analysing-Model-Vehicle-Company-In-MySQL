@@ -261,3 +261,32 @@ order by
 AmountPaid;
 ```
 
+![Alt text](CredLimit.PNG)
+
+### Can the perfomance of employees be evaluated using available sales data?
+
+The following query is used to retrieve employee data. The query uses a left join to connect the employee table, customer table, orders table and Orderdetails table. We multiply the PriceEach column wth ordered quantity to obtain the Total Sales value. The query the Groups the customer details to find the total sales values associated with each employee.
+
+```sql
+select
+e.employeeNumber,
+e.lastName,
+e.firstname,
+e.jobTitle,
+sum(od.priceEach * od.quantityOrdered)  as TotSalesValue
+from 
+mintclassics.employees e
+LEFT join 
+mintclassics.customers c on e.employeeNumber = c.salesRepEmployeeNumber
+left join
+mintclassics.orders os on c.customerNumber = os.customerNumber
+left join
+mintclassics.orderdetails od on  od.orderNumber = os.orderNumber
+group by
+e.employeeNumber,
+e.lastName,
+e.firstname,
+e.jobTitle
+order by TotSalesValue desc ;
+```
+
