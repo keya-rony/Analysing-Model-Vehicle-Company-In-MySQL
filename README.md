@@ -290,3 +290,4 @@ e.jobTitle
 order by TotSalesValue desc ;
 ```
 
+![Alt text](EmployeeSales.PNG)
