@@ -27,3 +27,5 @@ The following are the steps taken through the task execution process.
 Once I imported Mint classics database into MSQL Workbench, the next step is to understand how it's tables are related to each others and contents of each table.
 
 Below is an image of the database table columns and connections.
+
+![Alt text]()
