@@ -79,3 +79,5 @@ w.warehouseName
 ;
 ```
 The result is the number of stocks in each warehouse as shown in the screenshot below.
+
+![Alt text](warehousestocks.PNG)
