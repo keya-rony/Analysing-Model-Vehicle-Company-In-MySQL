@@ -235,3 +235,29 @@ PaidAmount desc
 ```
 By using this query, you can view a list of customers along with the dates and the largest payment amounts they have made. This helps in the analysis customer payment trends and identify customers with the highest payment amounts.
 
+![Alt text](payments.PNG)
+
+### How can company credit policies be evaluated? Are there any customers with credit issues that need to be addressed?
+
+The following query fetches customer data (customers) and related information, including customer number (customerNumber), customer name (customerName), credit limit (creditLimit), total payments made (totalPayments), and the difference between total payments and the credit limit (creditLimitDifference).The query groups  (GROUP BY) based on customer number (customerNumber) and credit limit (creditLimit). This means the data will be grouped for each customer and their credit limit value.Then, the HAVING clause is used to filter the query results. Only customer data with total payments (totalPayments) less than the credit limit (creditLimit) will be retrieved. This means only customers who have not paid their entire credit limit will be displayed.
+
+```sql
+select 
+c.customerNumber,
+c.customerName,
+c.creditLimit,
+sum(p.amount) as AmountPaid,
+(sum(p.amount) - c.creditLimit) as AmountOverlimit
+from
+customers c
+left join
+payments p on c.customerNumber = p.customerNumber
+Group by
+c.customerNumber,
+c.creditLimit
+Having
+sum(p.amount) < c.creditLimit
+order by
+AmountPaid;
+```
+
