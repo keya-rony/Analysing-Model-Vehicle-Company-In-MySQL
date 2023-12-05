@@ -191,4 +191,25 @@ p.buyPrice
 order by  ordersum desc
 ```
 
-![Alt text](ProductLines.PNG)
+![Alt text](salesvsPrice.PNG)
+
+### Who are the customers contributing the most sales?
+
+I use the following query to retrieve customer data, including customer number (customerNumber), customer name (customerName), and total sales (totalSales) made by each customer. It operates on the customers table and the orders table. Using a left join on Prduct Code, the query combines customer information with related order information.The query then uses Group By to obtain a count of total sales made by each customer.The query results are sorted (ORDER BY) in descending order (from highest to lowest) based on total sales (totalSales), resulting in a list of customers sorted by the highest total sales at the top.
+
+```sql
+select 
+c.customerNumber,
+c.customerName,
+count(os.orderNumber) as OrderCount
+from 
+mintclassics.customers c
+left join 
+orders os on c.customerNumber = os.customerNumber
+group by
+c.customerNumber,
+c.customerName
+order by
+OrderCount desc
+;
+```
