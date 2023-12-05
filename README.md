@@ -139,3 +139,31 @@ where
      (quantityInStock - totalOrdered)  > 0
 order by LessInventory desc
 ```
+![Alt text](stocksitemwise.PNG)
+
+### What is the comparison of various product lines?
+
+Looking into which product lines are more successful and which ones need improvement or removal. I use the following query to retrieve data about various product lines along with related information.The query joins the products table with the product lines table using a RIGHT JOIN based on the “productLine” column. This allows us to combine product information with the corresponding product line descriptions.The query then calculates the Total Revenue (TotRevenue) and The percenatge of sales versus Inventory (SalestoInventoryPct) based of the total stocks and Total sales.
+
+```SQL
+use mintclassics;
+
+select 
+pl.productLine,
+sum(p.quantityInStock) as TotStock,
+sum(od.quantityOrdered) as TotSales,
+sum(od.priceEach * od.quantityOrdered) as TotRevenue,
+(sum(od.quantityOrdered)/sum(p.quantityInStock)) * 100 as SalestoInventoryPct
+from productlines pl
+right join
+products p on pl.productLine = p.productLine
+right join
+orderdetails od on p.productCode = od.productCode
+group by
+pl.productLine,
+pl.textDescription
+order by
+SalestoInventoryPct desc
+
+```
+The result shows the performance of various product lines, which product lines have the highest sales percentage, and how each product line performs in terms of inventory and sales.
