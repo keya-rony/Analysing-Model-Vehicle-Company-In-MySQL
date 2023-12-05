@@ -167,3 +167,28 @@ SalestoInventoryPct desc
 
 ```
 The result shows the performance of various product lines, which product lines have the highest sales percentage, and how each product line performs in terms of inventory and sales.
+
+![Alt text](ProductLines.PNG)
+
+### Is there a relationship between prices and there sales levels?
+
+The following query retrieves the product code, product name, purchase price (buyPrice), and the total quantity ordered (OrderSum). The query runs on products table  and the orderdetails table .Using GROUP BY enables us to calculate the total quantity of products ordered (OrderSum) for each product, along with its purchase price and other details.
+
+```sql
+select 
+p.productCode,
+p.productName,
+p.buyPrice,
+sum(od.quantityOrdered) as OrderSum
+from 
+mintclassics.products p
+left join 
+orderdetails od on p.productCode = od.productCode
+Group by
+p.productCode,
+p.productName,
+p.buyPrice
+order by  ordersum desc
+```
+
+![Alt text](ProductLines.PNG)
