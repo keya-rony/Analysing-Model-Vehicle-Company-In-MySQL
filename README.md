@@ -111,3 +111,5 @@ order by LessInventory desc
 ```
 
 The result is a record of products that need replenishment in order to meet market requirement.
+
+![Alt text](LessStocksList.PNG)
