@@ -16,7 +16,7 @@ The following are the steps taken through the task execution process.
 
 2 - Understanding the Mint Classics Database and Its Business Processes
 
-3 - Exploratory
+3 - Exploratory Data Analysis
 
 4 - Formulating Recommendations to Address Business Issues
 
@@ -291,3 +291,44 @@ order by TotSalesValue desc ;
 ```
 
 ![Alt text](EmployeeSales.PNG)
+
+### Findings and Recommendations
+
+1.  **Warehouse Inventory**
+
+An anlysis of the total stocks in each warehouse and that of sales versus quantity in stock shows that there are warehouses with low or inactive inventory. I recommend conducting further reviews of these warehouses. Consider merging inactive warehouses or closing them.
+
+2. **Product Stocks**
+
+From the analysis of products Sales and quantity in stock, the results shows that there select items that are currently understocked and a majority of items whose sales are low compared to there high stock levels. Irecommend restocking the items that are in demand.
+For those Items whose inventory is high compared to sales, I recommend reducing the inventory of these products by either reducing the quantity ordered for these products or evaluating the actual demand for them.
+
+3. **Product Line Analysis**
+
+The analysis has shown the performance of various Product lines. Classic cars, Vintage cars and Motocycles are the leading Product Lines in terms of revenue generated. Planes, Ships and Trains are the least selling product Lines by Revenue generated. These Product lines with less success need further evaluation.Consider product improvements or, if necessary, discontinuation of inefficient products. This will help in enhancing the profitability of the product offering.
+
+4. **Product Prices Versus Sales Value**
+
+The analysis reveals a relationship between price and sales perfomance. There is need to carefully review product prices. I recommend adjusting the prices of items with low sales as this can increase the appeal of these items to customers and lead to a boost in sales.
+
+5. **Customer Sales Analysis**
+
+The analysis of customer sales shows that Euro+ Shopping Channel and Mini Gifts Distributors Ltd are the main sales contributors. I recommend focusing sales efforts to these valuable customers by providing Discounts and offering products that allign with their interests.
+
+6. **Customer Payment Trends**
+
+From the analysis of payment trends of the customers, I recommend A regular follow up of customer payments. Take follow-up actions on customers I dentified to have poor payment trends in order to mitigate risks.
+
+7. **Company Credit Policies**
+
+An anlysis of the Customer Credit Limit and Amount overlimit has been done. I recommend a review of the credit policy for each customer. In order to mitigate risks, Identify customers with credit issues and make changes to there policy.
+
+8. **Employee versus Sales**
+
+An analysis of the sales made associated to the employees shows that there are Sales that have hugely contributed to the sales made. This findings can be used to measure employee perfomance. I recommend looking into employees who have achieved or exceeded sales targets and rewarding them with incentives. Additionally, identify employees who may need improvement and provide necessary training or support.
+
+#### Conclusion 
+
+By following these recommendations and involving data analysis, the company can optimize its operations, improve profitability, and provide better customer service.
+
+
