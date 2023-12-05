@@ -61,4 +61,21 @@ order by TotQtyInStock
 ```
 The query shows the total inventory of each product in each warehouse and sorts it from the smallest to the largest.
 
-![Alt text]()
+![Alt text](ItemInventory.PNG)
+
+Looking the the total stocks for each warehouse. The query performs a left join between the warehouses table and the products table based on the warehouse code.
+``` SQL
+select 
+w.warehouseCode,
+w.warehouseName,
+sum(p.quantityInstock) AS TotalInvemtory
+from 
+  mintclassics.warehouses w
+Left join 
+mintclassics.products p on w.warehouseCode = p.warehouseCode
+group by 
+w.warehouseCode,
+w.warehouseName
+;
+```
+The result is the number of stocks in each warehouse as shown in the screenshot below.
