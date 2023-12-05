@@ -18,9 +18,9 @@ The following are the steps taken through the task execution process.
 
 3 - Exploratory Data Analysis
 
-4 - Formulating Recommendations to Address Business Issues
+4 - Findings and Recommendations
 
-5 - Crafting Conclusions and Recommendations with SQL Support
+5 - Conclusion
 
 
 ### Understanding the Mint Classics and Its Business Processes
