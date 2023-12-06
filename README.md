@@ -1,12 +1,48 @@
 # Model-Vehicle-Company-Data-Analysis Using MYSQL
 
+## Table of Contents
+
+- [Project Overview](#project-overview)
+
+- [Tools Used](#tools-used)
+
+- [Method](#method)
+
+- [Classic Car Model Database ](#classic-car-model-database)
+
+- [Understanding the Mint Classics Database and Its Business Processes](#understanding-the-mint-classics-database-and-its-business-processes)
+
+- [Exploratory Data Analysis](#exploratory-data-analysis)
+
+  - [Are all the warehouses currently in use needed? What is the total inventory of each warehouse?](#are-all-the-warehouses-currently-in-use-neeed?-what-is-the-total-inventory-of-each-warehouse?)
+
+  - [Are there products with high stock levels but low sales? Are there products with less stocks than Sales?](#are-there-products-with-high-stock-levels-but-low-sales?-are-there-products-with-less-stocks-than-sales?)
+
+  - [What is the comparison of various product lines?](#what-is-the-comparison-of-various-product-lines?)
+ 
+  - [Is there a relationship between prices and there sales levels?](#is-there-a-relationship-between-prices-and-there-sales-levels?)
+
+  - [Who are the customers contributing the most sales?](#who-are-the-customers-contributing-the-most-sales?)
+
+  - [What is the analysis of customer payment trends and what credit risks need to be considered?](#what-is-the-analysis-of-customer-payment-trends-and-what-credit-risks-need-to-be-considered?)
+
+  - [How can company credit policies be evaluated? Are there any customers with credit issues that need to be addressed?](#how-can-company-credit-policies-be-evaluated?are-there-any-customers-with-credit-issues-that-need-to-be-addressed?)
+
+  - [Can the perfomance of employees be evaluated using available sales data?](#can-the-perfomance-of-employees-be-evaluated-using-available-data?)
+
+-[Findings and Recommendations](#findings-and-recommendations)
+
+-[Conclusion](#conclusion)
+
 ## Project Overview
 The following analysis aims to anable Mint Classics Company, a retailer of classic model cars and other vehicles, address inventory and storage facility-related issues. The company needs to make a desicion on closing one of the existing storage facilities and is therefore looking for suggestions and recommendations for reorganizing or reducing inventory, while still maintaining timely service to their customers.
+
 
 ### Tools Used
 1.MSQL Workbench - This tool is used to Import Mintclassic Database, query the database and analysis of data.
 
 2.Github - This project uploaded on Github as a portfolio project.
+
 
 ### Method
 
@@ -21,6 +57,7 @@ The following are the steps taken through the task execution process.
 4 - Findings and Recommendations
 
 5 - Conclusion
+
 
 
 ### Classic Car Model Database
@@ -336,13 +373,17 @@ UNLOCK TABLES;
 
 
 
-### Understanding the Mint Classics and Its Business Processes
+
+
+### Understanding the Mint Classics Database and Its Business Processes
 
 Once I imported Mint classics database into MSQL Workbench, the next step is to understand how it's tables are related to each others and contents of each table.
 
 Below is an image of the database table columns and connections.
 
 ![Alt text](MintClassicDB.PNG)
+
+
 
 ### Exploratory Data Analysis
 
@@ -357,7 +398,9 @@ The following Analysis will be conducted on the following;
 * How can company credit policies be evaluated? Are there any customers with credit issues that need to be addressed?
 * Can the perfomance of employees be evaluated using available sales data?
 
-### Are all the warehouses currently is use needed? What is the total inventory of each warehouse?
+
+
+### Are all the warehouses currently in use needed? What is the total inventory of each warehouse?
 
 Using MSQL query to retrieve total inventory of each product in each warehouse. The query joins two tables in the Mint Classic databse, the Prouducts table and warehouses table based on the warehouse code
 ``` SQL
@@ -395,7 +438,9 @@ The result is the number of stocks in each warehouse as shown in the screenshot 
 
 ![Alt text](warehousestocks.PNG)
 
-### Are there products with high stock levels but low sales? Are there products with more stocks than Orders?
+
+
+### Are there products with high stock levels but low sales? Are there products with more stocks than Sales?
 
 Using SQL query to retrieves data from the products table and order details from the orderdetails table. The query then groups the data by product code, product name, and the quantity of the product available in stock. Next, the query calculates the total quantity of the product ordered by combining data from both tables. The query the finds the difference between Total stocks and total ordered  as InventoryLessOrders. The query then limits the result to only Pending Orders that have less stocks compared to what was ordered.
 
@@ -454,6 +499,8 @@ order by LessInventory desc
 ```
 ![Alt text](stocksitemwise.PNG)
 
+
+
 ### What is the comparison of various product lines?
 
 Looking into which product lines are more successful and which ones need improvement or removal. I use the following query to retrieve data about various product lines along with related information.The query joins the products table with the product lines table using a RIGHT JOIN based on the “productLine” column. This allows us to combine product information with the corresponding product line descriptions.The query then calculates the Total Revenue (TotRevenue) and The percenatge of sales versus Inventory (SalestoInventoryPct) based of the total stocks and Total sales.
@@ -483,6 +530,8 @@ The result shows the performance of various product lines, which product lines h
 
 ![Alt text](ProductLines.PNG)
 
+
+
 ### Is there a relationship between prices and there sales levels?
 
 The following query retrieves the product code, product name, purchase price (buyPrice), and the total quantity ordered (OrderSum). The query runs on products table  and the orderdetails table .Using GROUP BY enables us to calculate the total quantity of products ordered (OrderSum) for each product, along with its purchase price and other details.
@@ -505,6 +554,8 @@ order by  ordersum desc
 ```
 
 ![Alt text](salesvsPrice.PNG)
+
+
 
 ### Who are the customers contributing the most sales?
 
@@ -529,6 +580,8 @@ OrderCount desc
 
 ![Alt text](CustsSALES.PNG)
 
+
+
 ### What is the analysis of customer payment trends and what credit risks need to be considered?
 
 The following query retreieves customer data (customers) and payment information (payments) associated with each customer. The data retrieved includes customer number (customerNumber), customer name (customerName), payment date (paymentDate), and payment amount (paymentAmount). A LEFT JOIN between the customers table and the payments table  based on the customer number allows us to combine customer information with payment data related to each customer.
@@ -549,6 +602,8 @@ PaidAmount desc
 By using this query, you can view a list of customers along with the dates and the largest payment amounts they have made. This helps in the analysis customer payment trends and identify customers with the highest payment amounts.
 
 ![Alt text](payments.PNG)
+
+
 
 ### How can company credit policies be evaluated? Are there any customers with credit issues that need to be addressed?
 
@@ -575,6 +630,8 @@ AmountPaid;
 ```
 
 ![Alt text](CredLimit.PNG)
+
+
 
 ### Can the perfomance of employees be evaluated using available sales data?
 
@@ -604,6 +661,8 @@ order by TotSalesValue desc ;
 ```
 
 ![Alt text](EmployeeSales.PNG)
+
+
 
 ### Findings and Recommendations
 
@@ -639,6 +698,7 @@ An anlysis of the Customer Credit Limit and Amount overlimit has been done. I re
 8. **Employee versus Sales**
 
 An analysis of the sales made associated to the employees shows that there are Sales that have hugely contributed to the sales made. This findings can be used to measure employee perfomance. I recommend looking into employees who have achieved or exceeded sales targets and rewarding them with incentives. Additionally, identify employees who may need improvement and provide necessary training or support.
+
 
 #### Conclusion 
 
