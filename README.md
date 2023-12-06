@@ -30,9 +30,28 @@
 
   - [Can the perfomance of employees be evaluated using available sales data?](#can-the-perfomance-of-employees-be-evaluated-using-available-data?)
 
--[Findings and Recommendations](#findings-and-recommendations)
+- [Findings and Recommendations](#findings-and-recommendations)
 
--[Conclusion](#conclusion)
+  - [Warehouse Inventory](#warehouse-inventory)
+ 
+  - [Product Stocks](#product-stocks)
+ 
+  - [Product Line Analysis](#product-line-analysis)
+ 
+  - [Product Prices Versus Sales Value](#product-prices-versus-sales-value)
+ 
+  - [Customer Sales Analysis](#customer-sales-analysis)
+ 
+  - [Customer Payment Trends](#customer-payment-trends)
+ 
+  - [Company Credit Policies](#company-credit-policies)
+ 
+  - [Employee versus Sales](#employee-versus-sales)
+
+- [Conclusion](#conclusion)
+
+
+
 
 ## Project Overview
 The following analysis aims to anable Mint Classics Company, a retailer of classic model cars and other vehicles, address inventory and storage facility-related issues. The company needs to make a desicion on closing one of the existing storage facilities and is therefore looking for suggestions and recommendations for reorganizing or reducing inventory, while still maintaining timely service to their customers.
