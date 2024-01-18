@@ -1,4 +1,4 @@
-# Analysing Model Vehicle Company Using MYSQL
+# Analysing Model Vehicle Company Using in MySQL
 
 ## Table of Contents
 
